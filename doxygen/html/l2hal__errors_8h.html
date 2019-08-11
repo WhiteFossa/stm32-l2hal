@@ -80,15 +80,14 @@ $(function() {
 Include dependency graph for l2hal_errors.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="l2hal__errors_8h__incl.png" border="0" usemap="#_2mnt_2nfs_2th_2sps_2fossa_2_projects_2_electronics_2stm32-l2hal_2l2hal_2include_2l2hal__errors_8h" alt=""/></div>
-<map name="_2mnt_2nfs_2th_2sps_2fossa_2_projects_2_electronics_2stm32-l2hal_2l2hal_2include_2l2hal__errors_8h" id="_2mnt_2nfs_2th_2sps_2fossa_2_projects_2_electronics_2stm32-l2hal_2l2hal_2include_2l2hal__errors_8h">
-</map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="l2hal__errors_8h__dep__incl.png" border="0" usemap="#_2mnt_2nfs_2th_2sps_2fossa_2_projects_2_electronics_2stm32-l2hal_2l2hal_2include_2l2hal__errors_8hdep" alt=""/></div>
 <map name="_2mnt_2nfs_2th_2sps_2fossa_2_projects_2_electronics_2stm32-l2hal_2l2hal_2include_2l2hal__errors_8hdep" id="_2mnt_2nfs_2th_2sps_2fossa_2_projects_2_electronics_2stm32-l2hal_2l2hal_2include_2l2hal__errors_8hdep">
-<area shape="rect" id="node2" href="l2hal_8h.html" title="Level 2 HAL main file. " alt="" coords="5,124,175,195"/>
+<area shape="rect" id="node2" href="l2hal__buttons_8h.html" title="Polling buttons level 2 HAL driver. " alt="" coords="5,124,183,209"/>
+<area shape="rect" id="node3" href="l2hal_8h.html" title="Level 2 HAL main file. " alt="" coords="207,131,376,202"/>
 </map>
 </div>
 </div>
@@ -109,7 +108,8 @@ Macros</h2></td></tr>
 Enumerations</h2></td></tr>
 <tr class="memitem:ac171f7a7d08082e87e2308df7b0d0868"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="l2hal__errors_8h.html#ac171f7a7d08082e87e2308df7b0d0868">L2HAL_ErrorCode</a> { <a class="el" href="l2hal__errors_8h.html#ac171f7a7d08082e87e2308df7b0d0868a2bc49ec37d6a5715dd23e85f1ff5bb59">OK</a> = 0, 
 <a class="el" href="l2hal__errors_8h.html#ac171f7a7d08082e87e2308df7b0d0868a9683fc965be285edded4502f972f9d19">Generic</a> = 1, 
-<a class="el" href="l2hal__errors_8h.html#ac171f7a7d08082e87e2308df7b0d0868a76739d9a7a6f73e161612e31415cbc8a">WrongArgument</a> = 2
+<a class="el" href="l2hal__errors_8h.html#ac171f7a7d08082e87e2308df7b0d0868a76739d9a7a6f73e161612e31415cbc8a">WrongArgument</a> = 2, 
+<a class="el" href="l2hal__errors_8h.html#ac171f7a7d08082e87e2308df7b0d0868a6a534b46ae558c5295e7ef5e76995fb5">WrongOperation</a> = 3
  }</td></tr>
 <tr class="separator:ac171f7a7d08082e87e2308df7b0d0868"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -202,7 +202,9 @@ Functions</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="ac171f7a7d08082e87e2308df7b0d0868a9683fc965be285edded4502f972f9d19"></a>Generic&#160;</td><td class="fielddoc"><p>Generic error. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac171f7a7d08082e87e2308df7b0d0868a76739d9a7a6f73e161612e31415cbc8a"></a>WrongArgument&#160;</td><td class="fielddoc"><p>Function was called with wrong arguments </p>
+<tr><td class="fieldname"><a id="ac171f7a7d08082e87e2308df7b0d0868a76739d9a7a6f73e161612e31415cbc8a"></a>WrongArgument&#160;</td><td class="fielddoc"><p>Function was called with wrong arguments. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ac171f7a7d08082e87e2308df7b0d0868a6a534b46ae558c5295e7ef5e76995fb5"></a>WrongOperation&#160;</td><td class="fielddoc"><p>Generally possible, but impossible just now operation, like attempt to initialize already initialized port. </p>
 </td></tr>
 </table>
 

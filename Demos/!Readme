@@ -1,0 +1,3 @@
+Two buttons, attached to PA0 and PA1.
+
+Buttons state changes are displayed on SSD1306-controlled display, attached to I2C1
