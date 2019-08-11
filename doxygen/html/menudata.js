@@ -22,4 +22,7 @@ var menudata={children:[
 {text:"l",url:"globals_func.html#index_l"}]},
 {text:"Enumerations",url:"globals_enum.html"},
 {text:"Enumerator",url:"globals_eval.html"},
-{text:"Macros",url:"globals_defs.html"}]}]}]}
+{text:"Macros",url:"globals_defs.html",children:[
+{text:"b",url:"globals_defs.html#index_b"},
+{text:"l",url:"globals_defs.html#index_l"},
+{text:"m",url:"globals_defs.html#index_m"}]}]}]}]}
