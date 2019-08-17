@@ -50,8 +50,6 @@
  * 	L2HAL_Buttons_Context.SkipPinsInitialization = false;
  *	L2HAL_Buttons_Context.CustomPinInitializer = NULL;
  *
- *	L2HAL_Buttons_Init(&L2HAL_Buttons_Context);
- *
  *	Read comments to L2HAL_Buttons_ContextStruct to know more about pins initialization.
  *
  *	3) Initialize driver:
@@ -112,6 +110,9 @@ typedef struct
 	 * to ports data at the moment of button state change.
 	 * Button struct and ports data are READONLY (changing it will change data for all consequent handlers). Ports data could change at any time
 	 * after last handler exit. So if you plan to use it outside of handler, you need to copy data by hands.
+	 *
+	 * If callback pointer is NULL, nothing will be called during processing buttons events. It is useful if you need just to initialize a button,
+	 * and want to check it state in other handler via L2HAL_Buttons_GetButtonState().
 	 */
 	void (*ButtonEventsCallback)(void*, GPIO_PinState, uint16_t*);
 

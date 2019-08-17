@@ -196,11 +196,8 @@ void L2HAL_Buttons_Poll(L2HAL_Buttons_ContextStruct* context)
 
 		if (newState != buttonStruct->previousState)
 		{
-			/* Calling handler if needed */
-			if (NULL != buttonStruct->ButtonEventsCallback)
-			{
-				buttonStruct->ButtonEventsCallback(buttonStruct, newState, context->PortsData);
-			}
+			/* Calling handler */
+			buttonStruct->ButtonEventsCallback(buttonStruct, newState, context->PortsData);
 
 			/* Updating state */
 			buttonStruct->previousState = newState;
