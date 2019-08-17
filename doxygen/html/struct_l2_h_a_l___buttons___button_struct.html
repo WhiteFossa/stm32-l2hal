@@ -66,7 +66,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="drivers_2input_2buttons_2include_2l2hal__buttons_8h_source.html">l2hal_buttons.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="l2hal__buttons_8h_source.html">l2hal_buttons.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
@@ -74,26 +74,27 @@ Data Fields</h2></td></tr>
 <tr class="separator:a0b39ea5cebfc1992f25f5f1bb2828712"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4144813adfa4dfe7e7cbeea17d1b06eb"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l2_h_a_l___buttons___button_struct.html#a4144813adfa4dfe7e7cbeea17d1b06eb">pin</a></td></tr>
 <tr class="separator:a4144813adfa4dfe7e7cbeea17d1b06eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73b7c45e0f838582c2308d5a1773ba4e"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l2_h_a_l___buttons___button_struct.html#a73b7c45e0f838582c2308d5a1773ba4e">ButtonEventsCallback</a> )(void *, GPIO_PinState, uint16_t *)</td></tr>
-<tr class="separator:a73b7c45e0f838582c2308d5a1773ba4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d125c517e7060a5237a4206f6b01c47"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l2_h_a_l___buttons___button_struct.html#a2d125c517e7060a5237a4206f6b01c47">ButtonEventsCallback</a> )(void *, GPIO_PinState, uint16_t *)</td></tr>
+<tr class="separator:a2d125c517e7060a5237a4206f6b01c47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac353e21539aec27d3c8d3bd87f542608"><td class="memItemLeft" align="right" valign="top">GPIO_PinState&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l2_h_a_l___buttons___button_struct.html#ac353e21539aec27d3c8d3bd87f542608">previousState</a></td></tr>
 <tr class="separator:ac353e21539aec27d3c8d3bd87f542608"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Button-defining struct. </p>
 </div><h2 class="groupheader">Field Documentation</h2>
-<a id="a73b7c45e0f838582c2308d5a1773ba4e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a73b7c45e0f838582c2308d5a1773ba4e">&#9670;&nbsp;</a></span>ButtonEventsCallback</h2>
+<a id="a2d125c517e7060a5237a4206f6b01c47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d125c517e7060a5237a4206f6b01c47">&#9670;&nbsp;</a></span>ButtonEventsCallback</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void(* ButtonEventsCallback)(void *, GPIO_PinState, uint16_t *)</td>
+          <td class="memname">void(* ButtonEventsCallback) (void *, GPIO_PinState, uint16_t *)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Button events callback function (aka handler). Being called when button is pressed or released. Parameters are fed with pointer to changed button struct (i.e. <a class="el" href="struct_l2_h_a_l___buttons___button_struct.html">L2HAL_Buttons_ButtonStruct</a>), new button state and pointer to ports data at the moment of button state change. Button struct and ports data are READONLY (changing it will change data for all consequent handlers). Ports data could change at any time after last handler exit. So if you plan to use it outside of handler, you need to copy data by hands. </p>
+<p>Button events callback function (aka handler). Being called when button is pressed or released. Parameters are fed with pointer to changed button struct (i.e. <a class="el" href="struct_l2_h_a_l___buttons___button_struct.html">L2HAL_Buttons_ButtonStruct</a>), new button state and pointer to ports data at the moment of button state change. Button struct and ports data are READONLY (changing it will change data for all consequent handlers). Ports data could change at any time after last handler exit. So if you plan to use it outside of handler, you need to copy data by hands.</p>
+<p>If callback pointer is NULL, nothing will be called during processing buttons events. It is useful if you need just to initialize a button, and want to check it state in other handler via <a class="el" href="l2hal__buttons_8h.html#a4d7b2ced2ca7e92ed2442bda4318476b">L2HAL_Buttons_GetButtonState()</a>. </p>
 
 </div>
 </div>
@@ -143,7 +144,7 @@ Data Fields</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>/mnt/nfs/th/sps/fossa/Projects/Electronics/stm32-l2hal/l2hal/drivers/drivers/input/buttons/include/<a class="el" href="drivers_2input_2buttons_2include_2l2hal__buttons_8h_source.html">l2hal_buttons.h</a></li>
+<li>/mnt/nfs/th/sps/fossa/Projects/Electronics/stm32-l2hal/l2hal/drivers/input/buttons/include/<a class="el" href="l2hal__buttons_8h_source.html">l2hal_buttons.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
