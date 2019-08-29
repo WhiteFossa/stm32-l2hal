@@ -36,35 +36,20 @@
 
 /**
  * @file
- * @brief Level 2 HAL main file.
+ * @brief Incremental encoder level 2 HAL driver (private stuff).
  */
 
-/**
- * How to use level 2 HAL.
- *
- * 1) Put your custom hardware-initialization code into l2hal_custom, call functions, setting up hardware from L2HAL_InitCustomHardware()
- *
- * 2) Call L2HAL_Init() from your code before any L2HAL functions use.
- *
- */
+#ifndef L2HAL_DRIVERS_INPUT_ENCODERS_INCLUDE_L2HAL_ENCODERS_PRIVATE_H_
+#define L2HAL_DRIVERS_INPUT_ENCODERS_INCLUDE_L2HAL_ENCODERS_PRIVATE_H_
 
-#ifndef L2HAL_INCLUDE_L2HAL_H_
-#define L2HAL_INCLUDE_L2HAL_H_
-
-#include <stm32f1xx_hal.h>
-#include <l2hal_errors.h>
-#include <l2hal_custom.h>
-#include <l2hal_systick.h>
+#include <l2hal_encoders.h>
 
 
 /**
- * Call it to setup hardware.
+ * Driver attaches this function as callback handler to buttons, which are parts of encoder. See l2hal_buttons.h for callback parameters.
  */
-void L2HAL_Init(void);
+void L2HAL_Encoders_ButtonsCallback(L2HAL_Buttons_ButtonStruct* button, GPIO_PinState newPinState, uint16_t* portsData);
 
-/**
- * Set up MCU clocks. Being called from L2HAL_Init() automatically.
- */
-void L2HAL_SetupClocks(void);
 
-#endif /* L2HAL_INCLUDE_L2HAL_H_ */
+
+#endif /* L2HAL_DRIVERS_INPUT_ENCODERS_INCLUDE_L2HAL_ENCODERS_PRIVATE_H_ */

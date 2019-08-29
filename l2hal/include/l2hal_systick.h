@@ -36,35 +36,26 @@
 
 /**
  * @file
- * @brief Level 2 HAL main file.
+ * @brief Level 2 HAL SysTick handler and related functions.
+ *
+ * Usage:
+ * 1) Add call of L2HAL_SysTick_Callback() (defined in l2hal_systick_private.h) to SysTick_Handler(). You could find SysTick_Handler()
+ * in file like stm32f1xx_it.c
+ *
+ * 2) Add handlers calling L2HAL_SysTick_RegisterHandler(). Added handler will be called on next SysTick:
+ *
+ * 	L2HAL_SysTick_RegisterHandler(&SysTickHandler);
+ *
+ * 	3) Remember, that handlers are executed within interrupt context, so handlers have to exit as soon as possible.
  */
+
+#ifndef L2HAL_INCLUDE_L2HAL_SYSTICK_H_
+#define L2HAL_INCLUDE_L2HAL_SYSTICK_H_
 
 /**
- * How to use level 2 HAL.
- *
- * 1) Put your custom hardware-initialization code into l2hal_custom, call functions, setting up hardware from L2HAL_InitCustomHardware()
- *
- * 2) Call L2HAL_Init() from your code before any L2HAL functions use.
- *
+ * Registers new SysTick handler. After registration handler will be called each SysTick.
+ * @param hanlder Pointer to handler.
  */
+void L2HAL_SysTick_RegisterHandler(void (*handler)(void));
 
-#ifndef L2HAL_INCLUDE_L2HAL_H_
-#define L2HAL_INCLUDE_L2HAL_H_
-
-#include <stm32f1xx_hal.h>
-#include <l2hal_errors.h>
-#include <l2hal_custom.h>
-#include <l2hal_systick.h>
-
-
-/**
- * Call it to setup hardware.
- */
-void L2HAL_Init(void);
-
-/**
- * Set up MCU clocks. Being called from L2HAL_Init() automatically.
- */
-void L2HAL_SetupClocks(void);
-
-#endif /* L2HAL_INCLUDE_L2HAL_H_ */
+#endif /* L2HAL_INCLUDE_L2HAL_SYSTICK_H_ */
