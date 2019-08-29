@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['framebuffer',['Framebuffer',['../struct_l2_h_a_l___s_s_d1306___context_struct.html#ad058c7865da58f61afe6854aaededdde',1,'L2HAL_SSD1306_ContextStruct']]]
+  ['debouncinginterval',['DebouncingInterval',['../struct_l2_h_a_l___buttons___button_struct.html#aa6b4a970aad1786726965b1e19f06c78',1,'L2HAL_Buttons_ButtonStruct']]],
+  ['debouncingtimer',['DebouncingTimer',['../struct_l2_h_a_l___buttons___button_struct.html#af6a292909a9564a0e1f31082f8a5efe0',1,'L2HAL_Buttons_ButtonStruct']]]
 ];

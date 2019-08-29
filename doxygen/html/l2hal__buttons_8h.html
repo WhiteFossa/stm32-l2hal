@@ -92,6 +92,8 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="center"><img src="l2hal__buttons_8h__dep__incl.png" border="0" usemap="#_2mnt_2nfs_2th_2sps_2fossa_2_projects_2_electronics_2stm32-l2hal_2l2hal_2drivers_2input_2buttons_2include_2l2hal__buttons_8hdep" alt=""/></div>
 <map name="_2mnt_2nfs_2th_2sps_2fossa_2_projects_2_electronics_2stm32-l2hal_2l2hal_2drivers_2input_2buttons_2include_2l2hal__buttons_8hdep" id="_2mnt_2nfs_2th_2sps_2fossa_2_projects_2_electronics_2stm32-l2hal_2l2hal_2drivers_2input_2buttons_2include_2l2hal__buttons_8hdep">
 <area shape="rect" id="node2" href="l2hal__buttons__private_8h.html" title="Polling buttons level 2 HAL driver (private stuff). " alt="" coords="5,139,183,224"/>
+<area shape="rect" id="node3" href="l2hal__encoders_8h.html" title="Incremental encoder level 2 HAL driver. " alt="" coords="207,139,394,224"/>
+<area shape="rect" id="node4" href="l2hal__encoders__private_8h.html" title="Incremental encoder level 2 HAL driver (private stuff). " alt="" coords="207,272,394,357"/>
 </map>
 </div>
 </div>
@@ -113,8 +115,8 @@ Macros</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a7b61d8e7f6b0680d24bf8c088015d7f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="l2hal__buttons_8h.html#a7b61d8e7f6b0680d24bf8c088015d7f2">L2HAL_Buttons_Init</a> (<a class="el" href="struct_l2_h_a_l___buttons___context_struct.html">L2HAL_Buttons_ContextStruct</a> *context)</td></tr>
 <tr class="separator:a7b61d8e7f6b0680d24bf8c088015d7f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea8071a71ee52eccd6192c11a3aa177f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_l2_h_a_l___buttons___button_struct.html">L2HAL_Buttons_ButtonStruct</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="l2hal__buttons_8h.html#aea8071a71ee52eccd6192c11a3aa177f">L2HAL_Buttons_AddButton</a> (<a class="el" href="struct_l2_h_a_l___buttons___context_struct.html">L2HAL_Buttons_ContextStruct</a> *context, GPIO_TypeDef *port, uint16_t pin, void(*buttonEventsCallback)(void *, GPIO_PinState, uint16_t *))</td></tr>
-<tr class="separator:aea8071a71ee52eccd6192c11a3aa177f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a961121eb388ec0660eb1b1cd6acc8c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_l2_h_a_l___buttons___button_struct.html">L2HAL_Buttons_ButtonStruct</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="l2hal__buttons_8h.html#a1a961121eb388ec0660eb1b1cd6acc8c">L2HAL_Buttons_AddButton</a> (<a class="el" href="struct_l2_h_a_l___buttons___context_struct.html">L2HAL_Buttons_ContextStruct</a> *context, GPIO_TypeDef *port, uint16_t pin, void *arbitraryContextPointer, uint16_t debouncingInterval, void(*buttonEventsCallback)(void *, GPIO_PinState, uint16_t *))</td></tr>
+<tr class="separator:a1a961121eb388ec0660eb1b1cd6acc8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d7b2ced2ca7e92ed2442bda4318476b"><td class="memItemLeft" align="right" valign="top">GPIO_PinState&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="l2hal__buttons_8h.html#a4d7b2ced2ca7e92ed2442bda4318476b">L2HAL_Buttons_GetButtonState</a> (<a class="el" href="struct_l2_h_a_l___buttons___button_struct.html">L2HAL_Buttons_ButtonStruct</a> *button, uint16_t *portsData)</td></tr>
 <tr class="separator:a4d7b2ced2ca7e92ed2442bda4318476b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a501b0159a08e0b8aafab56d024033445"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="l2hal__buttons_8h.html#a501b0159a08e0b8aafab56d024033445">L2HAL_Buttons_Poll</a> (<a class="el" href="struct_l2_h_a_l___buttons___context_struct.html">L2HAL_Buttons_ContextStruct</a> *context)</td></tr>
@@ -124,16 +126,17 @@ Functions</h2></td></tr>
 <div class="textblock"><p>Polling buttons level 2 HAL driver. </p>
 <p>Driver for unlimited amount of buttons (polling, don't use interrupts).</p>
 <p>How to use it:</p>
-<p>1) Declare driver context (<a class="el" href="l2hal__custom_8h.html">l2hal_custom.h</a> is good place for it): <a class="el" href="struct_l2_h_a_l___buttons___context_struct.html">L2HAL_Buttons_ContextStruct</a> L2HAL_Buttons_Context;</p>
-<p>2) Set up context: </p><pre class="fragment">L2HAL_Buttons_Context.SkipPinsInitialization = false;
+<p>1) Setup SysTick driver (see <a class="el" href="l2hal__systick_8h.html" title="Level 2 HAL SysTick handler and related functions. ">l2hal_systick.h</a> for details).</p>
+<p>2) Declare driver context (<a class="el" href="l2hal__custom_8h.html">l2hal_custom.h</a> is good place for it): <a class="el" href="struct_l2_h_a_l___buttons___context_struct.html">L2HAL_Buttons_ContextStruct</a> L2HAL_Buttons_Context;</p>
+<p>3) Set up context: </p><pre class="fragment">L2HAL_Buttons_Context.SkipPinsInitialization = false;
 </pre><p> L2HAL_Buttons_Context.CustomPinInitializer = NULL;</p>
 <p>Read comments to <a class="el" href="struct_l2_h_a_l___buttons___context_struct.html">L2HAL_Buttons_ContextStruct</a> to know more about pins initialization.</p>
-<p>3) Initialize driver:</p>
+<p>4) Initialize driver:</p>
 <p>L2HAL_Buttons_Init(&amp;L2HAL_Buttons_Context);</p>
-<p>4) Declare button(s) event handler(s):</p>
+<p>5) Declare button(s) event handler(s):</p>
 <p>void Button1Callback(L2HAL_Buttons_ButtonStruct* button, GPIO_PinState newPinState, uint16_t* portData);</p>
 <p>5) Add new button(s) to driver:</p>
-<p>L2HAL_Buttons_AddButton(&amp;L2HAL_Buttons_Context, GPIOA, GPIO_PIN_0, &amp;Button1Callback);</p>
+<p>L2HAL_Buttons_AddButton(&amp;L2HAL_Buttons_Context, GPIOA, GPIO_PIN_0, NULL, 10, &amp;Button1Callback);</p>
 <p>6) Start to poll ports (in main loop or in interrupt):</p>
 <p>while(true) { L2HAL_Buttons_Poll(&amp;L2HAL_Buttons_Context); } </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
@@ -153,8 +156,8 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="aea8071a71ee52eccd6192c11a3aa177f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aea8071a71ee52eccd6192c11a3aa177f">&#9670;&nbsp;</a></span>L2HAL_Buttons_AddButton()</h2>
+<a id="a1a961121eb388ec0660eb1b1cd6acc8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a961121eb388ec0660eb1b1cd6acc8c">&#9670;&nbsp;</a></span>L2HAL_Buttons_AddButton()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -180,6 +183,18 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>arbitraryContextPointer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>debouncingInterval</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">void(*)(void *, GPIO_PinState, uint16_t *)&#160;</td>
           <td class="paramname"><em>buttonEventsCallback</em>&#160;</td>
         </tr>
@@ -195,10 +210,13 @@ Functions</h2></td></tr>
     <tr><td class="paramname">context</td><td>Pointer to driver context. </td></tr>
     <tr><td class="paramname">port</td><td>Pointer to port, to what button is attached. </td></tr>
     <tr><td class="paramname">pin</td><td>Pin, to what button is attached. </td></tr>
-    <tr><td class="paramname">ButtonEventsCallback</td><td>Pointer to function, which will be called in case of button state change (aka handler). READ THE <a class="el" href="struct_l2_h_a_l___buttons___button_struct.html">L2HAL_Buttons_ButtonStruct</a> CAREFULLY to understand nature of the function parameters. @ </td></tr>
+    <tr><td class="paramname">buttonEventsCallback</td><td>Pointer to function, which will be called in case of button state change (aka handler). READ THE <a class="el" href="struct_l2_h_a_l___buttons___button_struct.html">L2HAL_Buttons_ButtonStruct</a> CAREFULLY to understand nature of the function parameters. </td></tr>
+    <tr><td class="paramname">arbitraryContextPointer</td><td>You can provide here pointer to something (for example to code, what owns button). This pointer will be stored within button struct and so will be available in button callback handler. See input/encoders driver for example of this context usage. </td></tr>
+    <tr><td class="paramname">debouncingInterval</td><td>Timeout (in SysTicks) used for contacts bouncing cancellation. See DebouncingInterval field in <a class="el" href="struct_l2_h_a_l___buttons___button_struct.html">L2HAL_Buttons_ButtonStruct</a> for details. </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to added button struct. </dd></dl>
 
 </div>
 </div>

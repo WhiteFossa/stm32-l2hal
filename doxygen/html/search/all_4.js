@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['generic',['Generic',['../l2hal__errors_8h.html#ac171f7a7d08082e87e2308df7b0d0868a9683fc965be285edded4502f972f9d19',1,'l2hal_errors.h']]]
+  ['encodereventscallback',['EncoderEventsCallback',['../struct_l2_h_a_l___encoders___encoder_struct.html#ac5c6630793a4dd1ae724f7615b2e71a4',1,'L2HAL_Encoders_EncoderStruct']]],
+  ['encoders',['Encoders',['../struct_l2_h_a_l___encoders___context_struct.html#a99153e6979c2f92ef8a33f68deddfb0c',1,'L2HAL_Encoders_ContextStruct']]],
+  ['encoderscount',['EncodersCount',['../struct_l2_h_a_l___encoders___context_struct.html#a5ea8d96f5c4f4703e3b5f15d9c0b67c3',1,'L2HAL_Encoders_ContextStruct']]]
 ];
