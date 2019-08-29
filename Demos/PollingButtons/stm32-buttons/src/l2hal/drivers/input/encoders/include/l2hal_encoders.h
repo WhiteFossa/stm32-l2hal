@@ -128,6 +128,7 @@ void L2HAL_Encoders_Init(L2HAL_Encoders_ContextStruct* context);
  * @param trailingPort Port, to what trailing encoder channel is connected.
  * @param trailingPin Pin in trailing port, to what leading encoder channel is connected.
  * @param activeState Active pins state (see L2HAL_Encoders_EncoderStruct for details).
+ * @param leadingPinDebouncingInterval Debouncing interval for leading pin (see L2HAL_Buttons_AddButton).
  * @param encoderEventsCallback Pointer to function, which will be called when is being encoder turned.
  * @param arbitraryContextPointer You can provide here pointer to something (for example to code, what owns encoder). This pointer will be stored within encoder
  * struct and so will be available in encoder callback handler.
@@ -139,7 +140,8 @@ L2HAL_Encoders_EncoderStruct* L2HAL_Encoders_AddEncoder(L2HAL_Encoders_ContextSt
 		GPIO_TypeDef* trailingPort,
 		uint16_t trailingPin,
 		GPIO_PinState activeState,
-		void (*encoderEventsCallback)(void*, L2HAL_Encoders_Direction),
-		void* arbitraryContextPointer);
+		uint16_t leadingPinDebouncingInterval,
+		void* arbitraryContextPointer,
+		void (*encoderEventsCallback)(void*, L2HAL_Encoders_Direction));
 
 #endif /* L2HAL_DRIVERS_INPUT_ENCODERS_INCLUDE_L2HAL_ENCODERS_H_ */

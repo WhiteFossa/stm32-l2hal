@@ -43,6 +43,7 @@
 #define L2HAL_DRIVERS_INPUT_BUTTONS_INCLUDE_L2HAL_BUTTONS_PRIVATE_H_
 
 #include <l2hal_buttons.h>
+#include <l2hal_systick.h>
 
 /**
  * Pin will be initialized in this mode by L2HAL_Buttons_DefaultPinInitializer().
@@ -60,6 +61,33 @@
 #define L2HAL_BUTTONS_PORT_DATA_MASK 0xFFFFU
 
 /**
+ * Metacontext -united context for all button driver instances.
+ */
+typedef struct
+{
+	/**
+	 * False until first driver initialization, true after it.
+	 */
+	bool IsInitialized;
+
+	/**
+	 * How many instances of button driver we have.
+	 */
+	uint8_t ContextsCount;
+
+	/**
+	 * Array of pointers to contexts.
+	 */
+	L2HAL_Buttons_ContextStruct** Contexts;
+
+} L2HAL_Buttons_MetacontextStruct;
+
+/**
+ * Driver metacontext.
+ */
+L2HAL_Buttons_MetacontextStruct L2HAL_Buttons_Metacontext = { false, 0, NULL };
+
+/**
  * Default pin initializer. Clocking port in, setting pin as input and enabling pull-up for it.
  * @port port Pins belongs to this port.
  * @port pins Pins to initialize.
@@ -75,6 +103,11 @@ void L2HAL_Buttons_GetPortsData(L2HAL_Buttons_ContextStruct* context);
  * Returns port index (see L2HAL_Buttons_IndexesToPorts to reverse conversion).
  */
 uint8_t L2HAL_Buttons_GetPortIndex(GPIO_TypeDef* port);
+
+/**
+ * SysTick handler, registered during driver first instance initialization.
+ */
+void L2HAL_Buttons_SysTickHandler();
 
 
 #endif /* L2HAL_DRIVERS_INPUT_BUTTONS_INCLUDE_L2HAL_BUTTONS_PRIVATE_H_ */

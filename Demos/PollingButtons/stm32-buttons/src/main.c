@@ -90,10 +90,10 @@ int main(int argc, char* argv[])
 	FMGL_API_PushFramebuffer(&fmglContext);
 
 	/* Initializing button 1 */
-	L2HAL_Buttons_AddButton(&L2HAL_Buttons_Context, GPIOA, GPIO_PIN_0, &Button1Callback, NULL);
+	L2HAL_Buttons_AddButton(&L2HAL_Buttons_Context, GPIOA, GPIO_PIN_0, NULL, 10, &Button1Callback);
 
 	/* Initializing button 2 */
-	L2HAL_Buttons_AddButton(&L2HAL_Buttons_Context, GPIOA, GPIO_PIN_1, &Button2Callback, NULL);
+	L2HAL_Buttons_AddButton(&L2HAL_Buttons_Context, GPIOA, GPIO_PIN_1, NULL, 10, &Button2Callback);
 
 	while(true)
 	{

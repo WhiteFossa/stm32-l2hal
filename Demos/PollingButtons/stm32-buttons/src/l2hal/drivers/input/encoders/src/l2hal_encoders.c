@@ -73,12 +73,12 @@ L2HAL_Encoders_EncoderStruct* L2HAL_Encoders_AddEncoder(L2HAL_Encoders_ContextSt
 		GPIO_TypeDef* trailingPort,
 		uint16_t trailingPin,
 		GPIO_PinState activeState,
-		void (*encoderEventsCallback)(void*, L2HAL_Encoders_Direction),
-		void* arbitraryContextPointer)
+		uint16_t leadingPinDebouncingInterval,
+		void* arbitraryContextPointer,
+		void (*encoderEventsCallback)(void*, L2HAL_Encoders_Direction))
 {
 	/* Allocating memory for new encoder */
-	context->EncodersCount ++;
-	context->Encoders = realloc(context->Encoders, context->EncodersCount * sizeof(L2HAL_Encoders_EncoderStruct));
+	context->Encoders = realloc(context->Encoders, (context->EncodersCount + 1) * sizeof(L2HAL_Encoders_EncoderStruct));
 	if (NULL == context->Encoders)
 	{
 		/* Realloc failed */
@@ -86,25 +86,31 @@ L2HAL_Encoders_EncoderStruct* L2HAL_Encoders_AddEncoder(L2HAL_Encoders_ContextSt
 	}
 
 	/* Filling new encoder struct*/
-	L2HAL_Encoders_EncoderStruct* newEncoder = &context->Encoders[context->EncodersCount - 1];
+	L2HAL_Encoders_EncoderStruct* newEncoder = &context->Encoders[context->EncodersCount];
 
 	/* Setting-up leading channel */
 	newEncoder->LeadingChannel = L2HAL_Buttons_AddButton(context->ButtonsDriverContext,
 			leadingPort,
 			leadingPin,
-			&L2HAL_Encoders_ButtonsCallback,
-			newEncoder);
+			newEncoder,
+			leadingPinDebouncingInterval,
+			&L2HAL_Encoders_ButtonsCallback);
 
 	/* And trailing */
 	newEncoder->TrailingChannel = L2HAL_Buttons_AddButton(context->ButtonsDriverContext,
 			trailingPort,
 			trailingPin,
-			NULL, /* We don't need handler for trailing channel */
-			newEncoder);
+			newEncoder,
+			0,
+			NULL); /* We don't need handler for trailing channel */
 
 	newEncoder->ActiveState = activeState;
 	newEncoder->ArbitraryContextPointer = arbitraryContextPointer;
 	newEncoder->EncoderEventsCallback = encoderEventsCallback;
+
+	/* Increasing counter lately to be interrupt-safe (if we increase it early, then it is possible that interrupt will came between
+	* increase and new encoder setup */
+	context->EncodersCount ++;
 
 	return newEncoder;
 }
