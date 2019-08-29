@@ -70,18 +70,39 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a0b39ea5cebfc1992f25f5f1bb2828712"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l2_h_a_l___buttons___button_struct.html#a0b39ea5cebfc1992f25f5f1bb2828712">portIndex</a></td></tr>
-<tr class="separator:a0b39ea5cebfc1992f25f5f1bb2828712"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4144813adfa4dfe7e7cbeea17d1b06eb"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l2_h_a_l___buttons___button_struct.html#a4144813adfa4dfe7e7cbeea17d1b06eb">pin</a></td></tr>
-<tr class="separator:a4144813adfa4dfe7e7cbeea17d1b06eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0093f1e951717b892732bc7ea782710a"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l2_h_a_l___buttons___button_struct.html#a0093f1e951717b892732bc7ea782710a">PortIndex</a></td></tr>
+<tr class="separator:a0093f1e951717b892732bc7ea782710a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38b1073a17d7b10e6c87f0d97c0e8ab6"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l2_h_a_l___buttons___button_struct.html#a38b1073a17d7b10e6c87f0d97c0e8ab6">Pin</a></td></tr>
+<tr class="separator:a38b1073a17d7b10e6c87f0d97c0e8ab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d125c517e7060a5237a4206f6b01c47"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l2_h_a_l___buttons___button_struct.html#a2d125c517e7060a5237a4206f6b01c47">ButtonEventsCallback</a> )(void *, GPIO_PinState, uint16_t *)</td></tr>
 <tr class="separator:a2d125c517e7060a5237a4206f6b01c47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac353e21539aec27d3c8d3bd87f542608"><td class="memItemLeft" align="right" valign="top">GPIO_PinState&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l2_h_a_l___buttons___button_struct.html#ac353e21539aec27d3c8d3bd87f542608">previousState</a></td></tr>
-<tr class="separator:ac353e21539aec27d3c8d3bd87f542608"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2c64daa593875c754e9a51af80f8784"><td class="memItemLeft" align="right" valign="top">GPIO_PinState&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l2_h_a_l___buttons___button_struct.html#ae2c64daa593875c754e9a51af80f8784">PreviousState</a></td></tr>
+<tr class="separator:ae2c64daa593875c754e9a51af80f8784"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07a378b0e84208bc7ecdfa3839fc3a57"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l2_h_a_l___buttons___button_struct.html#a07a378b0e84208bc7ecdfa3839fc3a57">ArbitraryContextPointer</a></td></tr>
+<tr class="separator:a07a378b0e84208bc7ecdfa3839fc3a57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6b4a970aad1786726965b1e19f06c78"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l2_h_a_l___buttons___button_struct.html#aa6b4a970aad1786726965b1e19f06c78">DebouncingInterval</a></td></tr>
+<tr class="separator:aa6b4a970aad1786726965b1e19f06c78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6a292909a9564a0e1f31082f8a5efe0"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l2_h_a_l___buttons___button_struct.html#af6a292909a9564a0e1f31082f8a5efe0">DebouncingTimer</a></td></tr>
+<tr class="separator:af6a292909a9564a0e1f31082f8a5efe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Button-defining struct. </p>
 </div><h2 class="groupheader">Field Documentation</h2>
+<a id="a07a378b0e84208bc7ecdfa3839fc3a57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07a378b0e84208bc7ecdfa3839fc3a57">&#9670;&nbsp;</a></span>ArbitraryContextPointer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* ArbitraryContextPointer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>When calling <a class="el" href="l2hal__buttons_8h.html#a1a961121eb388ec0660eb1b1cd6acc8c">L2HAL_Buttons_AddButton()</a> user can provide pointer to arbitrary context (for example to code, which owns button). This pointer is stored here. </p>
+
+</div>
+</div>
 <a id="a2d125c517e7060a5237a4206f6b01c47"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2d125c517e7060a5237a4206f6b01c47">&#9670;&nbsp;</a></span>ButtonEventsCallback</h2>
 
@@ -98,14 +119,44 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
-<a id="a4144813adfa4dfe7e7cbeea17d1b06eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4144813adfa4dfe7e7cbeea17d1b06eb">&#9670;&nbsp;</a></span>pin</h2>
+<a id="aa6b4a970aad1786726965b1e19f06c78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6b4a970aad1786726965b1e19f06c78">&#9670;&nbsp;</a></span>DebouncingInterval</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint16_t pin</td>
+          <td class="memname">uint16_t DebouncingInterval</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>When button state changed this value is copied into DebouncingTimer field. Then DebouncingTimer decreases with each SysTick and button state changes are ignored until DebouncingTimer is 0. </p>
+
+</div>
+</div>
+<a id="af6a292909a9564a0e1f31082f8a5efe0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6a292909a9564a0e1f31082f8a5efe0">&#9670;&nbsp;</a></span>DebouncingTimer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t DebouncingTimer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Timer, used to suppress contacts bouncing. See DebouncingInterval for details. </p>
+
+</div>
+</div>
+<a id="a38b1073a17d7b10e6c87f0d97c0e8ab6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38b1073a17d7b10e6c87f0d97c0e8ab6">&#9670;&nbsp;</a></span>Pin</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t Pin</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -113,14 +164,14 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
-<a id="a0b39ea5cebfc1992f25f5f1bb2828712"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b39ea5cebfc1992f25f5f1bb2828712">&#9670;&nbsp;</a></span>portIndex</h2>
+<a id="a0093f1e951717b892732bc7ea782710a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0093f1e951717b892732bc7ea782710a">&#9670;&nbsp;</a></span>PortIndex</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t portIndex</td>
+          <td class="memname">uint8_t PortIndex</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -128,14 +179,14 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
-<a id="ac353e21539aec27d3c8d3bd87f542608"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac353e21539aec27d3c8d3bd87f542608">&#9670;&nbsp;</a></span>previousState</h2>
+<a id="ae2c64daa593875c754e9a51af80f8784"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2c64daa593875c754e9a51af80f8784">&#9670;&nbsp;</a></span>PreviousState</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">GPIO_PinState previousState</td>
+          <td class="memname">GPIO_PinState PreviousState</td>
         </tr>
       </table>
 </div><div class="memdoc">

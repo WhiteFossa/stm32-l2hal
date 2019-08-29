@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['i2chandle',['I2CHandle',['../struct_l2_h_a_l___s_s_d1306___context_struct.html#aa7437bb9c80e1a66d1f6bd4095cc3676',1,'L2HAL_SSD1306_ContextStruct']]],
-  ['isdatatransferinprogress',['IsDataTransferInProgress',['../struct_l2_h_a_l___s_s_d1306___context_struct.html#ad42925d8e63b940bbdf2158123933436',1,'L2HAL_SSD1306_ContextStruct']]],
-  ['isfound',['IsFound',['../struct_l2_h_a_l___s_s_d1306___context_struct.html#acb060626c427e9deb521a16efcd37def',1,'L2HAL_SSD1306_ContextStruct']]],
-  ['isportdatacanbeupdated',['IsPortDataCanBeUpdated',['../struct_l2_h_a_l___buttons___context_struct.html#a63f1a3f52293a3cafeb6ee76546e980b',1,'L2HAL_Buttons_ContextStruct']]]
+  ['encodereventscallback',['EncoderEventsCallback',['../struct_l2_h_a_l___encoders___encoder_struct.html#ac5c6630793a4dd1ae724f7615b2e71a4',1,'L2HAL_Encoders_EncoderStruct']]],
+  ['encoders',['Encoders',['../struct_l2_h_a_l___encoders___context_struct.html#a99153e6979c2f92ef8a33f68deddfb0c',1,'L2HAL_Encoders_ContextStruct']]],
+  ['encoderscount',['EncodersCount',['../struct_l2_h_a_l___encoders___context_struct.html#a5ea8d96f5c4f4703e3b5f15d9c0b67c3',1,'L2HAL_Encoders_ContextStruct']]]
 ];

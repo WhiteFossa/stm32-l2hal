@@ -1,12 +1,16 @@
 var searchData=
 [
-  ['l2hal_5fbuttons_5faddbutton',['L2HAL_Buttons_AddButton',['../l2hal__buttons_8h.html#aea8071a71ee52eccd6192c11a3aa177f',1,'l2hal_buttons.c']]],
+  ['l2hal_5fbuttons_5faddbutton',['L2HAL_Buttons_AddButton',['../l2hal__buttons_8h.html#a1a961121eb388ec0660eb1b1cd6acc8c',1,'l2hal_buttons.c']]],
   ['l2hal_5fbuttons_5fdefaultpininitializer',['L2HAL_Buttons_DefaultPinInitializer',['../l2hal__buttons__private_8h.html#a99609edfb0ce757485fcb9c6418f291d',1,'l2hal_buttons.c']]],
   ['l2hal_5fbuttons_5fgetbuttonstate',['L2HAL_Buttons_GetButtonState',['../l2hal__buttons_8h.html#a4d7b2ced2ca7e92ed2442bda4318476b',1,'l2hal_buttons.c']]],
   ['l2hal_5fbuttons_5fgetportindex',['L2HAL_Buttons_GetPortIndex',['../l2hal__buttons__private_8h.html#a647c63db612c5b75ecbc8056df9766a5',1,'l2hal_buttons.c']]],
   ['l2hal_5fbuttons_5fgetportsdata',['L2HAL_Buttons_GetPortsData',['../l2hal__buttons__private_8h.html#a9d256ebe4588d9569627082c65a1fbc7',1,'l2hal_buttons.c']]],
   ['l2hal_5fbuttons_5finit',['L2HAL_Buttons_Init',['../l2hal__buttons_8h.html#a7b61d8e7f6b0680d24bf8c088015d7f2',1,'l2hal_buttons.c']]],
   ['l2hal_5fbuttons_5fpoll',['L2HAL_Buttons_Poll',['../l2hal__buttons_8h.html#a501b0159a08e0b8aafab56d024033445',1,'l2hal_buttons.c']]],
+  ['l2hal_5fbuttons_5fsystickhandler',['L2HAL_Buttons_SysTickHandler',['../l2hal__buttons__private_8h.html#a13dc170259ebd5d0fb75a8de60abbb56',1,'l2hal_buttons.c']]],
+  ['l2hal_5fencoders_5faddencoder',['L2HAL_Encoders_AddEncoder',['../l2hal__encoders_8h.html#a3f4e4e3954c9f5f89500cf72bdc15c75',1,'l2hal_encoders.c']]],
+  ['l2hal_5fencoders_5fbuttonscallback',['L2HAL_Encoders_ButtonsCallback',['../l2hal__encoders__private_8h.html#a25940475d6ed4cd7b0c0e64e32453ea1',1,'l2hal_encoders.c']]],
+  ['l2hal_5fencoders_5finit',['L2HAL_Encoders_Init',['../l2hal__encoders_8h.html#aa90034786859887aa5e166bcaa312232',1,'l2hal_encoders.c']]],
   ['l2hal_5ferror',['L2HAL_Error',['../l2hal__errors_8h.html#a51f608302f91d56a4527772467873d09',1,'l2hal_errors.c']]],
   ['l2hal_5finit',['L2HAL_Init',['../l2hal_8h.html#a2950ef10b922b73a83a190a11df972db',1,'l2hal.c']]],
   ['l2hal_5finitcustomhardware',['L2HAL_InitCustomHardware',['../l2hal__custom_8h.html#a6bac0f7e143b02648bc0cc9451e77b34',1,'l2hal_custom.c']]],
@@ -28,5 +32,8 @@ var searchData=
   ['l2hal_5fssd1306_5fturndisplayon',['L2HAL_SSD1306_TurnDisplayOn',['../l2hal__ssd1306_8h.html#a09dff193da15866de2ed71c69aae4cbc',1,'l2hal_ssd1306.c']]],
   ['l2hal_5fssd1306_5fwaitfortransfercompletion',['L2HAL_SSD1306_WaitForTransferCompletion',['../l2hal__ssd1306__private_8h.html#a43ff9c06c5772dd3178b9087344701c9',1,'l2hal_ssd1306.c']]],
   ['l2hal_5fssd1306_5fwritecommand',['L2HAL_SSD1306_WriteCommand',['../l2hal__ssd1306__private_8h.html#aa5013dcc36fb2f593ac94a6e6d13ed28',1,'l2hal_ssd1306.c']]],
-  ['l2hal_5fssd1306_5fwritedata',['L2HAL_SSD1306_WriteData',['../l2hal__ssd1306__private_8h.html#af012a69e8f054a0bbbafdd031140d3e5',1,'l2hal_ssd1306.c']]]
+  ['l2hal_5fssd1306_5fwritedata',['L2HAL_SSD1306_WriteData',['../l2hal__ssd1306__private_8h.html#af012a69e8f054a0bbbafdd031140d3e5',1,'l2hal_ssd1306.c']]],
+  ['l2hal_5fsystick_5fcallback',['L2HAL_SysTick_Callback',['../l2hal__systick__private_8h.html#a8fb29a78c9a508f56abd866422aae7ca',1,'l2hal_systick.c']]],
+  ['l2hal_5fsystick_5finit',['L2HAL_SysTick_Init',['../l2hal__systick__private_8h.html#ac54de5b999c64a1add3812311d7b29f3',1,'l2hal_systick.c']]],
+  ['l2hal_5fsystick_5fregisterhandler',['L2HAL_SysTick_RegisterHandler',['../l2hal__systick_8h.html#a5a0aaf63bc3bc42fcb47ab32ba9275ae',1,'l2hal_systick.c']]]
 ];

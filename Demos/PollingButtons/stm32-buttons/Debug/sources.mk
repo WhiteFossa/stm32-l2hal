@@ -31,6 +31,7 @@ src/fmgl/fonts/src \
 src/fmgl/src \
 src/l2hal/drivers/display/ssd1306/src \
 src/l2hal/drivers/input/buttons/src \
+src/l2hal/drivers/input/encoders/src \
 src/l2hal/src \
 src \
 system/src/cmsis \

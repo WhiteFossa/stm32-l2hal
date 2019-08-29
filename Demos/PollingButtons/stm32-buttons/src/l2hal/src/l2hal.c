@@ -41,6 +41,9 @@ void L2HAL_Init(void)
 	/* Setting up clocks */
 	L2HAL_SetupClocks();
 
+	/* Setting up SysTick handler */
+	L2HAL_SysTick_Init();
+
 	/* Initializing custom hardware */
 	L2HAL_InitCustomHardware();
 }

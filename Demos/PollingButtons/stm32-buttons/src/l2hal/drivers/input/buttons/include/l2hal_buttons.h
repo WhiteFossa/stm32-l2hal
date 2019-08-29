@@ -42,27 +42,29 @@
  *
  * How to use it:
  *
- * 1) Declare driver context (l2hal_custom.h is good place for it):
+ * 1) Setup SysTick driver (see l2hal_systick.h for details).
+ *
+ * 2) Declare driver context (l2hal_custom.h is good place for it):
  * L2HAL_Buttons_ContextStruct L2HAL_Buttons_Context;
  *
- * 2) Set up context:
+ * 3) Set up context:
  *
  * 	L2HAL_Buttons_Context.SkipPinsInitialization = false;
  *	L2HAL_Buttons_Context.CustomPinInitializer = NULL;
  *
  *	Read comments to L2HAL_Buttons_ContextStruct to know more about pins initialization.
  *
- *	3) Initialize driver:
+ *	4) Initialize driver:
  *
  *	L2HAL_Buttons_Init(&L2HAL_Buttons_Context);
  *
- *	4) Declare button(s) event handler(s):
+ *	5) Declare button(s) event handler(s):
  *
  *	void Button1Callback(L2HAL_Buttons_ButtonStruct* button, GPIO_PinState newPinState, uint16_t* portData);
  *
  *	5) Add new button(s) to driver:
  *
- *	L2HAL_Buttons_AddButton(&L2HAL_Buttons_Context, GPIOA, GPIO_PIN_0, &Button1Callback);
+ *	L2HAL_Buttons_AddButton(&L2HAL_Buttons_Context, GPIOA, GPIO_PIN_0, NULL, 10, &Button1Callback);
  *
  *	6) Start to poll ports (in main loop or in interrupt):
  *
@@ -97,12 +99,12 @@ typedef struct
 	/**
 	 * Button connected to port with this index.
 	 */
-	uint8_t portIndex;
+	uint8_t PortIndex;
 
 	/**
 	 * Button connected to this pin.
 	 */
-	uint16_t pin;
+	uint16_t Pin;
 
 	/**
 	 * Button events callback function (aka handler). Being called when button is pressed or released.
@@ -119,7 +121,24 @@ typedef struct
 	/**
 	 * Button previous state.
 	 */
-	GPIO_PinState previousState;
+	GPIO_PinState PreviousState;
+
+	/**
+	 * When calling L2HAL_Buttons_AddButton() user can provide pointer to arbitrary context (for example to code, which owns button).
+	 * This pointer is stored here.
+	 */
+	void* ArbitraryContextPointer;
+
+	/**
+	 * When button state changed this value is copied into DebouncingTimer field. Then DebouncingTimer decreases with each SysTick and button
+	 * state changes are ignored until DebouncingTimer is 0.
+	 */
+	uint16_t DebouncingInterval;
+
+	/**
+	 * Timer, used to suppress contacts bouncing. See DebouncingInterval for details.
+	 */
+	uint16_t DebouncingTimer;
 
 } L2HAL_Buttons_ButtonStruct;
 
@@ -174,13 +193,18 @@ void L2HAL_Buttons_Init(L2HAL_Buttons_ContextStruct* context);
  * @param context Pointer to driver context.
  * @param port Pointer to port, to what button is attached.
  * @param pin Pin, to what button is attached.
- * @param ButtonEventsCallback Pointer to function, which will be called in case of button state change (aka handler). READ THE L2HAL_Buttons_ButtonStruct CAREFULLY
+ * @param buttonEventsCallback Pointer to function, which will be called in case of button state change (aka handler). READ THE L2HAL_Buttons_ButtonStruct CAREFULLY
  * to understand nature of the function parameters.
- * @
+ * @param arbitraryContextPointer You can provide here pointer to something (for example to code, what owns button). This pointer will be stored within button
+ * struct and so will be available in button callback handler. See input/encoders driver for example of this context usage.
+ * @param debouncingInterval Timeout (in SysTicks) used for contacts bouncing cancellation. See DebouncingInterval field in L2HAL_Buttons_ButtonStruct for details.
+ * @return Pointer to added button struct.
  */
 L2HAL_Buttons_ButtonStruct* L2HAL_Buttons_AddButton(L2HAL_Buttons_ContextStruct* context,
 		GPIO_TypeDef* port,
 		uint16_t pin,
+		void* arbitraryContextPointer,
+		uint16_t debouncingInterval,
 		void (*buttonEventsCallback)(void*, GPIO_PinState, uint16_t*));
 
 /**
