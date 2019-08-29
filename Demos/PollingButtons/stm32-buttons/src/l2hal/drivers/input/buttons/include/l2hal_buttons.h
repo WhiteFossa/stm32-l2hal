@@ -97,12 +97,12 @@ typedef struct
 	/**
 	 * Button connected to port with this index.
 	 */
-	uint8_t portIndex;
+	uint8_t PortIndex;
 
 	/**
 	 * Button connected to this pin.
 	 */
-	uint16_t pin;
+	uint16_t Pin;
 
 	/**
 	 * Button events callback function (aka handler). Being called when button is pressed or released.
@@ -119,7 +119,13 @@ typedef struct
 	/**
 	 * Button previous state.
 	 */
-	GPIO_PinState previousState;
+	GPIO_PinState PreviousState;
+
+	/**
+	 * When calling L2HAL_Buttons_AddButton() user can provide pointer to arbitrary context (for example to code, which owns button).
+	 * This pointer is stored here.
+	 */
+	void* ArbitraryContextPointer;
 
 } L2HAL_Buttons_ButtonStruct;
 
@@ -174,14 +180,17 @@ void L2HAL_Buttons_Init(L2HAL_Buttons_ContextStruct* context);
  * @param context Pointer to driver context.
  * @param port Pointer to port, to what button is attached.
  * @param pin Pin, to what button is attached.
- * @param ButtonEventsCallback Pointer to function, which will be called in case of button state change (aka handler). READ THE L2HAL_Buttons_ButtonStruct CAREFULLY
+ * @param buttonEventsCallback Pointer to function, which will be called in case of button state change (aka handler). READ THE L2HAL_Buttons_ButtonStruct CAREFULLY
  * to understand nature of the function parameters.
- * @
+ * @param arbitraryContextPointer You can provide here pointer to something (for example to code, what owns button). This pointer will be stored within button
+ * struct and so will be available in button callback handler. See input/encoders driver for example of this context usage.
+ * @return Pointer to added button struct.
  */
 L2HAL_Buttons_ButtonStruct* L2HAL_Buttons_AddButton(L2HAL_Buttons_ContextStruct* context,
 		GPIO_TypeDef* port,
 		uint16_t pin,
-		void (*buttonEventsCallback)(void*, GPIO_PinState, uint16_t*));
+		void (*buttonEventsCallback)(void*, GPIO_PinState, uint16_t*),
+		void* arbitraryContextPointer);
 
 /**
  * Gets button state using data from ports. Usually you need to call this function from button events callback to determine

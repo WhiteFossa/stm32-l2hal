@@ -89,14 +89,11 @@ int main(int argc, char* argv[])
 	FMGL_API_ClearScreen(&fmglContext);
 	FMGL_API_PushFramebuffer(&fmglContext);
 
-	/* Initializing buttons driver */
-	L2HAL_Buttons_Init(&L2HAL_Buttons_Context);
-
 	/* Initializing button 1 */
-	L2HAL_Buttons_AddButton(&L2HAL_Buttons_Context, GPIOA, GPIO_PIN_0, &Button1Callback);
+	L2HAL_Buttons_AddButton(&L2HAL_Buttons_Context, GPIOA, GPIO_PIN_0, &Button1Callback, NULL);
 
 	/* Initializing button 2 */
-	L2HAL_Buttons_AddButton(&L2HAL_Buttons_Context, GPIOA, GPIO_PIN_1, &Button2Callback);
+	L2HAL_Buttons_AddButton(&L2HAL_Buttons_Context, GPIOA, GPIO_PIN_1, &Button2Callback, NULL);
 
 	while(true)
 	{

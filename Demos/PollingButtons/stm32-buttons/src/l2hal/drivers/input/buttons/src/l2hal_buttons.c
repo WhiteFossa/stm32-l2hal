@@ -40,7 +40,7 @@
 void L2HAL_Buttons_Init(L2HAL_Buttons_ContextStruct* context)
 {
 	context->ButtonsCount = 0;
-	context->Buttons = malloc(context->ButtonsCount * sizeof(L2HAL_Buttons_ButtonStruct));
+	context->Buttons = malloc(0);
 
 	context->IsPortDataCanBeUpdated = true;
 
@@ -78,7 +78,8 @@ uint8_t L2HAL_Buttons_GetPortIndex(GPIO_TypeDef* port)
 L2HAL_Buttons_ButtonStruct* L2HAL_Buttons_AddButton(L2HAL_Buttons_ContextStruct* context,
 		GPIO_TypeDef* port,
 		uint16_t pin,
-		void (*buttonEventsCallback)(void*, GPIO_PinState, uint16_t*))
+		void (*buttonEventsCallback)(void*, GPIO_PinState, uint16_t*),
+		void* arbitraryContextPointer)
 {
 	/* Getting port index and checking if such button already exist? */
 	uint8_t portIndex = L2HAL_Buttons_GetPortIndex(port);
@@ -87,7 +88,7 @@ L2HAL_Buttons_ButtonStruct* L2HAL_Buttons_AddButton(L2HAL_Buttons_ContextStruct*
 	{
 		L2HAL_Buttons_ButtonStruct* currentButton = &context->Buttons[buttonIndex];
 
-		if ((currentButton->portIndex == portIndex) && (currentButton->pin == pin))
+		if ((currentButton->PortIndex == portIndex) && (currentButton->Pin == pin))
 		{
 			/* Button already exists */
 			L2HAL_Error(WrongArgument);
@@ -96,13 +97,19 @@ L2HAL_Buttons_ButtonStruct* L2HAL_Buttons_AddButton(L2HAL_Buttons_ContextStruct*
 
 	/* Allocating memory for new button */
 	context->ButtonsCount ++;
-	realloc(context->Buttons, context->ButtonsCount * sizeof(L2HAL_Buttons_ButtonStruct));
+	context->Buttons = realloc(context->Buttons, context->ButtonsCount * sizeof(L2HAL_Buttons_ButtonStruct));
+	if (NULL == context->Buttons)
+	{
+		/* Realloc failed */
+		L2HAL_Error(Generic);
+	}
 
 	/* Filling structure*/
 	L2HAL_Buttons_ButtonStruct* newButton = &context->Buttons[context->ButtonsCount - 1];
-	newButton->portIndex = portIndex;
-	newButton->pin = pin;
+	newButton->PortIndex = portIndex;
+	newButton->Pin = pin;
 	newButton->ButtonEventsCallback = buttonEventsCallback;
+	newButton->ArbitraryContextPointer = arbitraryContextPointer;
 
 	/* Initializing port */
 	if (!context->SkipPinsInitialization)
@@ -114,14 +121,14 @@ L2HAL_Buttons_ButtonStruct* L2HAL_Buttons_AddButton(L2HAL_Buttons_ContextStruct*
 	L2HAL_Buttons_GetPortsData(context);
 
 	/* Setting button initial state */
-	newButton->previousState = L2HAL_Buttons_GetButtonState(newButton, context->PortsData);
+	newButton->PreviousState = L2HAL_Buttons_GetButtonState(newButton, context->PortsData);
 
 	return newButton;
 }
 
 GPIO_PinState L2HAL_Buttons_GetButtonState(L2HAL_Buttons_ButtonStruct* button, uint16_t* portsData)
 {
-	if (0x00 != (portsData[button->portIndex] & button->pin))
+	if (0x00 != (portsData[button->PortIndex] & button->Pin))
 	{
 		return GPIO_PIN_SET;
 	}
@@ -194,7 +201,7 @@ void L2HAL_Buttons_Poll(L2HAL_Buttons_ContextStruct* context)
 		L2HAL_Buttons_ButtonStruct* buttonStruct = &context->Buttons[buttonIndex];
 		GPIO_PinState newState = L2HAL_Buttons_GetButtonState(buttonStruct, context->PortsData);
 
-		if (newState != buttonStruct->previousState)
+		if (newState != buttonStruct->PreviousState)
 		{
 			/* Calling handler if needed */
 			if (NULL != buttonStruct->ButtonEventsCallback)
@@ -203,7 +210,7 @@ void L2HAL_Buttons_Poll(L2HAL_Buttons_ContextStruct* context)
 			}
 
 			/* Updating state */
-			buttonStruct->previousState = newState;
+			buttonStruct->PreviousState = newState;
 		}
 	}
 	context->IsPortDataCanBeUpdated = true;
