@@ -32,6 +32,7 @@ src/fmgl/src \
 src/l2hal/drivers/display/ssd1306/src \
 src/l2hal/drivers/input/buttons/src \
 src/l2hal/drivers/input/encoders/src \
+src/l2hal/mcu_dependent/mcus/stm32f103c8t6 \
 src/l2hal/src \
 src \
 system/src/cmsis \

@@ -42,9 +42,11 @@
 /**
  * How to use level 2 HAL.
  *
- * 1) Put your custom hardware-initialization code into l2hal_custom, call functions, setting up hardware from L2HAL_InitCustomHardware()
+ * 1) Select your MCU by including one into mcu_dependent/l2hal_mcu.h
  *
- * 2) Call L2HAL_Init() from your code before any L2HAL functions use.
+ * 2) Put your custom hardware-initialization code into l2hal_custom, call functions, setting up hardware from L2HAL_InitCustomHardware()
+ *
+ * 3) Call L2HAL_Init() from your code before any L2HAL functions use.
  *
  */
 
@@ -55,6 +57,7 @@
 #include <l2hal_errors.h>
 #include <l2hal_custom.h>
 #include <l2hal_systick.h>
+#include <l2hal_mcu.h>
 
 
 /**
