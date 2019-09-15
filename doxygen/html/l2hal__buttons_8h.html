@@ -65,7 +65,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
-<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">l2hal_buttons.h File Reference</div>  </div>
@@ -74,7 +73,7 @@ $(function() {
 
 <p>Polling buttons level 2 HAL driver.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;stm32f1xx_hal.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="l2hal__mcu_8h_source.html">l2hal_mcu.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="l2hal__aux_8h_source.html">l2hal_aux.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="l2hal__errors_8h_source.html">l2hal_errors.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -82,8 +81,12 @@ Include dependency graph for l2hal_buttons.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="l2hal__buttons_8h__incl.png" border="0" usemap="#_2mnt_2nfs_2th_2sps_2fossa_2_projects_2_electronics_2stm32-l2hal_2l2hal_2drivers_2input_2buttons_2include_2l2hal__buttons_8h" alt=""/></div>
 <map name="_2mnt_2nfs_2th_2sps_2fossa_2_projects_2_electronics_2stm32-l2hal_2l2hal_2drivers_2input_2buttons_2include_2l2hal__buttons_8h" id="_2mnt_2nfs_2th_2sps_2fossa_2_projects_2_electronics_2stm32-l2hal_2l2hal_2drivers_2input_2buttons_2include_2l2hal__buttons_8h">
-<area shape="rect" id="node3" href="l2hal__aux_8h.html" title="Auxiliary stuff for level 2 HAL. " alt="" coords="88,139,176,165"/>
-<area shape="rect" id="node6" href="l2hal__errors_8h.html" title="Errors handling stuff for level 2 HAL. " alt="" coords="269,139,369,165"/>
+<area shape="rect" id="node2" href="l2hal__mcu_8h.html" title="Include your MCU here. " alt="" coords="123,139,215,165"/>
+<area shape="rect" id="node7" href="l2hal__errors_8h.html" title="Errors handling stuff for level 2 HAL. " alt="" coords="229,421,329,448"/>
+<area shape="rect" id="node9" href="l2hal__aux_8h.html" title="Auxiliary stuff for level 2 HAL. " alt="" coords="314,139,402,165"/>
+<area shape="rect" id="node3" href="l2hal__stm32f103c8t6_8h.html" title="MCU&#45;specific stuff for STM32F103C8T6. " alt="" coords="63,213,221,255"/>
+<area shape="rect" id="node5" href="l2hal__stm32f103c8t6__buttons_8h.html" title="MCU&#45;specific stuff for STM32F103C8T6, polling buttons driver. " alt="" coords="47,303,237,373"/>
+<area shape="rect" id="node6" href="l2hal__buttons__defaults_8h.html" title="Defaults, related to L2HAL polling buttons driver. " alt="" coords="42,421,205,448"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -105,11 +108,6 @@ Data Structures</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l2_h_a_l___buttons___context_struct.html">L2HAL_Buttons_ContextStruct</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a3647fdc5b87d2b8e897dfb21941a4d3e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="l2hal__buttons_8h.html#a3647fdc5b87d2b8e897dfb21941a4d3e">L2HAL_BUTTONS_MAX_PORTS_COUNT</a>&#160;&#160;&#160;4</td></tr>
-<tr class="separator:a3647fdc5b87d2b8e897dfb21941a4d3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -139,23 +137,7 @@ Functions</h2></td></tr>
 <p>L2HAL_Buttons_AddButton(&amp;L2HAL_Buttons_Context, GPIOA, GPIO_PIN_0, NULL, 10, &amp;Button1Callback);</p>
 <p>6) Start to poll ports (in main loop or in interrupt):</p>
 <p>while(true) { L2HAL_Buttons_Poll(&amp;L2HAL_Buttons_Context); } </p>
-</div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a3647fdc5b87d2b8e897dfb21941a4d3e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3647fdc5b87d2b8e897dfb21941a4d3e">&#9670;&nbsp;</a></span>L2HAL_BUTTONS_MAX_PORTS_COUNT</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define L2HAL_BUTTONS_MAX_PORTS_COUNT&#160;&#160;&#160;4</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Maximal ports count for given device. A-D for STM32F103 </p>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a1a961121eb388ec0660eb1b1cd6acc8c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1a961121eb388ec0660eb1b1cd6acc8c">&#9670;&nbsp;</a></span>L2HAL_Buttons_AddButton()</h2>
 

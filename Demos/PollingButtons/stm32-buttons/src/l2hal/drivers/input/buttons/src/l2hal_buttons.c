@@ -98,17 +98,17 @@ void L2HAL_Buttons_Init(L2HAL_Buttons_ContextStruct* context)
 void L2HAL_Buttons_GetPortsData(L2HAL_Buttons_ContextStruct* context)
 {
 	/* Polling ports (even non-initialized) */
-	for (uint8_t portIndex = 0; portIndex < L2HAL_BUTTONS_MAX_PORTS_COUNT; portIndex ++)
+	for (uint8_t portIndex = 0; portIndex < L2HAL_MAX_PORTS_COUNT; portIndex ++)
 	{
-		context->PortsData[portIndex] = L2HAL_Buttons_IndexesToPorts[portIndex]->IDR & L2HAL_BUTTONS_PORT_DATA_MASK;
+		context->PortsData[portIndex] = L2HAL_IndexesToPorts[portIndex]->IDR & L2HAL_BUTTONS_PORT_DATA_MASK;
 	}
 }
 
 uint8_t L2HAL_Buttons_GetPortIndex(GPIO_TypeDef* port)
 {
-	for (uint8_t portIndex = 0; portIndex < L2HAL_BUTTONS_MAX_PORTS_COUNT; portIndex ++)
+	for (uint8_t portIndex = 0; portIndex < L2HAL_MAX_PORTS_COUNT; portIndex ++)
 	{
-		if (port == L2HAL_Buttons_IndexesToPorts[portIndex])
+		if (port == L2HAL_IndexesToPorts[portIndex])
 		{
 			return portIndex;
 		}
@@ -186,53 +186,7 @@ GPIO_PinState L2HAL_Buttons_GetButtonState(L2HAL_Buttons_ButtonStruct* button, u
 	}
 }
 
-void L2HAL_Buttons_DefaultPinInitializer(GPIO_TypeDef* port, uint32_t pins)
-{
-	/* Clocking port in */
-	if (GPIOA == port)
-	{
-		__HAL_RCC_GPIOA_CLK_ENABLE();
-	}
-	else if (GPIOB == port)
-	{
-		__HAL_RCC_GPIOB_CLK_ENABLE();
-	}
-	else if (GPIOC == port)
-	{
-		__HAL_RCC_GPIOC_CLK_ENABLE();
-	}
-	else if (GPIOD == port)
-	{
-		__HAL_RCC_GPIOD_CLK_ENABLE();
-	}
-//	else if (GPIOE == port)
-//	{
-//		__HAL_RCC_GPIOE_CLK_ENABLE();
-//	}
-//	else if (GPIOF == port)
-//	{
-//		__HAL_RCC_GPIOF_CLK_ENABLE();
-//	}
-//	else if (GPIOG == port)
-//	{
-//		__HAL_RCC_GPIOG_CLK_ENABLE();
-//	}
-	else
-	{
-		/* Non-existing port */
-		L2HAL_Error(WrongArgument);
-	}
 
-
-	/* Initializing pin */
-	GPIO_InitTypeDef GPIO_InitStruct;
-
-	GPIO_InitStruct.Mode = L2HAL_BUTTONS_DEFAULT_PIN_MODE;
-	GPIO_InitStruct.Pull = L2HAL_BUTTONS_DEFAULT_PIN_PULL_MODE;
-
-	GPIO_InitStruct.Pin = pins;
-	HAL_GPIO_Init(port, &GPIO_InitStruct);
-}
 
 void L2HAL_Buttons_Poll(L2HAL_Buttons_ContextStruct* context)
 {

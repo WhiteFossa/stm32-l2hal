@@ -1,13 +1,13 @@
 var searchData=
 [
-  ['l2hal_5fbuttons_5fdefault_5fpin_5fmode',['L2HAL_BUTTONS_DEFAULT_PIN_MODE',['../l2hal__buttons__private_8h.html#a7ffd10fd45c9ec19720697929f02db54',1,'l2hal_buttons_private.h']]],
-  ['l2hal_5fbuttons_5fdefault_5fpin_5fpull_5fmode',['L2HAL_BUTTONS_DEFAULT_PIN_PULL_MODE',['../l2hal__buttons__private_8h.html#abb70911d5f4988494f9aef8f7008a0fd',1,'l2hal_buttons_private.h']]],
-  ['l2hal_5fbuttons_5fmax_5fports_5fcount',['L2HAL_BUTTONS_MAX_PORTS_COUNT',['../l2hal__buttons_8h.html#a3647fdc5b87d2b8e897dfb21941a4d3e',1,'l2hal_buttons.h']]],
+  ['l2hal_5fbuttons_5fdefault_5fpin_5fmode',['L2HAL_BUTTONS_DEFAULT_PIN_MODE',['../l2hal__buttons__defaults_8h.html#a7ffd10fd45c9ec19720697929f02db54',1,'l2hal_buttons_defaults.h']]],
+  ['l2hal_5fbuttons_5fdefault_5fpin_5fpull_5fmode',['L2HAL_BUTTONS_DEFAULT_PIN_PULL_MODE',['../l2hal__buttons__defaults_8h.html#abb70911d5f4988494f9aef8f7008a0fd',1,'l2hal_buttons_defaults.h']]],
   ['l2hal_5fbuttons_5fport_5fdata_5fmask',['L2HAL_BUTTONS_PORT_DATA_MASK',['../l2hal__buttons__private_8h.html#ab2573879a3917f3ffc3345c5a81bf016',1,'l2hal_buttons_private.h']]],
   ['l2hal_5ferror_5fclock_5fsignal_5fport',['L2HAL_ERROR_CLOCK_SIGNAL_PORT',['../l2hal__errors_8h.html#a1789f0a69257253983c532e0c03c6db6',1,'l2hal_errors.h']]],
   ['l2hal_5ferror_5fsignal_5fpin',['L2HAL_ERROR_SIGNAL_PIN',['../l2hal__errors_8h.html#ac18bc983f15020e97d20c17567418f75',1,'l2hal_errors.h']]],
   ['l2hal_5ferror_5fsignal_5fpin_5fstate',['L2HAL_ERROR_SIGNAL_PIN_STATE',['../l2hal__errors_8h.html#a0b9748486e2c307b1d89c2157579f721',1,'l2hal_errors.h']]],
   ['l2hal_5ferror_5fsignal_5fport',['L2HAL_ERROR_SIGNAL_PORT',['../l2hal__errors_8h.html#ae7dcb5581f989474d2787d0df2fb775b',1,'l2hal_errors.h']]],
+  ['l2hal_5fmax_5fports_5fcount',['L2HAL_MAX_PORTS_COUNT',['../l2hal__stm32f103c8t6_8h.html#aa3c42b6ab6e334dcfe7e583a23637fe7',1,'l2hal_stm32f103c8t6.h']]],
   ['l2hal_5fssd1306_5fbrightness_5fdiv_5ffactor',['L2HAL_SSD1306_BRIGHTNESS_DIV_FACTOR',['../l2hal__ssd1306__private_8h.html#ae616c581b6eae37d6e5693fe4734715e',1,'l2hal_ssd1306_private.h']]],
   ['l2hal_5fssd1306_5fbrightness_5fthreshold',['L2HAL_SSD1306_BRIGHTNESS_THRESHOLD',['../l2hal__ssd1306__private_8h.html#af14670536ad88a0c6560b9cfa55a832e',1,'l2hal_ssd1306_private.h']]],
   ['l2hal_5fssd1306_5fcontrol_5fbyte_5fcommand',['L2HAL_SSD1306_CONTROL_BYTE_COMMAND',['../l2hal__ssd1306__private_8h.html#a19770f832ba5ce981c39bbb1b51e7332',1,'l2hal_ssd1306_private.h']]],

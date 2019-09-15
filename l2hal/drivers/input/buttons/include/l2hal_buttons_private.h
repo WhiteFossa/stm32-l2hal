@@ -42,18 +42,10 @@
 #ifndef L2HAL_DRIVERS_INPUT_BUTTONS_INCLUDE_L2HAL_BUTTONS_PRIVATE_H_
 #define L2HAL_DRIVERS_INPUT_BUTTONS_INCLUDE_L2HAL_BUTTONS_PRIVATE_H_
 
+#include <l2hal_aux.h>
 #include <l2hal_buttons.h>
 #include <l2hal_systick.h>
 
-/**
- * Pin will be initialized in this mode by L2HAL_Buttons_DefaultPinInitializer().
- */
-#define L2HAL_BUTTONS_DEFAULT_PIN_MODE GPIO_MODE_INPUT
-
-/**
- * Pin will be initialized in this pull mode by L2HAL_Buttons_DefaultPinInitializer().
- */
-#define L2HAL_BUTTONS_DEFAULT_PIN_PULL_MODE GPIO_PULLUP
 
 /**
  * Mask data, read from IDR with this mask.
@@ -87,12 +79,7 @@ typedef struct
  */
 L2HAL_Buttons_MetacontextStruct L2HAL_Buttons_Metacontext = { false, 0, NULL };
 
-/**
- * Default pin initializer. Clocking port in, setting pin as input and enabling pull-up for it.
- * @port port Pins belongs to this port.
- * @port pins Pins to initialize.
- */
-void L2HAL_Buttons_DefaultPinInitializer(GPIO_TypeDef* port, uint32_t pins);
+
 
 /**
  * Loads data from physical ports into context, blocking reading data during update.

@@ -76,14 +76,19 @@ $(function() {
 <code>#include &lt;<a class="el" href="l2hal__errors_8h_source.html">l2hal_errors.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="l2hal__custom_8h_source.html">l2hal_custom.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="l2hal__systick_8h_source.html">l2hal_systick.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="l2hal__mcu_8h_source.html">l2hal_mcu.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for l2hal.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="l2hal_8h__incl.png" border="0" usemap="#_2mnt_2nfs_2th_2sps_2fossa_2_projects_2_electronics_2stm32-l2hal_2l2hal_2include_2l2hal_8h" alt=""/></div>
 <map name="_2mnt_2nfs_2th_2sps_2fossa_2_projects_2_electronics_2stm32-l2hal_2l2hal_2include_2l2hal_8h" id="_2mnt_2nfs_2th_2sps_2fossa_2_projects_2_electronics_2stm32-l2hal_2l2hal_2include_2l2hal_8h">
-<area shape="rect" id="node3" href="l2hal__errors_8h.html" title="Errors handling stuff for level 2 HAL. " alt="" coords="103,124,203,151"/>
-<area shape="rect" id="node5" href="l2hal__custom_8h.html" title="l2hal_custom.h" alt="" coords="227,124,337,151"/>
-<area shape="rect" id="node6" href="l2hal__systick_8h.html" title="Level 2 HAL SysTick handler and related functions. " alt="" coords="362,124,471,151"/>
+<area shape="rect" id="node3" href="l2hal__errors_8h.html" title="Errors handling stuff for level 2 HAL. " alt="" coords="320,407,420,433"/>
+<area shape="rect" id="node5" href="l2hal__custom_8h.html" title="l2hal_custom.h" alt="" coords="160,124,271,151"/>
+<area shape="rect" id="node6" href="l2hal__systick_8h.html" title="Level 2 HAL SysTick handler and related functions. " alt="" coords="295,124,405,151"/>
+<area shape="rect" id="node7" href="l2hal__mcu_8h.html" title="Include your MCU here. " alt="" coords="44,124,136,151"/>
+<area shape="rect" id="node8" href="l2hal__stm32f103c8t6_8h.html" title="MCU&#45;specific stuff for STM32F103C8T6. " alt="" coords="43,199,201,240"/>
+<area shape="rect" id="node9" href="l2hal__stm32f103c8t6__buttons_8h.html" title="MCU&#45;specific stuff for STM32F103C8T6, polling buttons driver. " alt="" coords="127,288,317,359"/>
+<area shape="rect" id="node10" href="l2hal__buttons__defaults_8h.html" title="Defaults, related to L2HAL polling buttons driver. " alt="" coords="133,407,295,433"/>
 </map>
 </div>
 </div>
@@ -115,8 +120,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>How to use level 2 HAL.</p>
-<p>1) Put your custom hardware-initialization code into l2hal_custom, call functions, setting up hardware from <a class="el" href="l2hal__custom_8h.html#a6bac0f7e143b02648bc0cc9451e77b34">L2HAL_InitCustomHardware()</a></p>
-<p>2) Call <a class="el" href="l2hal_8h.html#a2950ef10b922b73a83a190a11df972db">L2HAL_Init()</a> from your code before any L2HAL functions use. Call it to setup hardware. </p>
+<p>1) Select your MCU by including one into <a class="el" href="l2hal__mcu_8h.html" title="Include your MCU here. ">mcu_dependent/l2hal_mcu.h</a></p>
+<p>2) Put your custom hardware-initialization code into l2hal_custom, call functions, setting up hardware from <a class="el" href="l2hal__custom_8h.html#a6bac0f7e143b02648bc0cc9451e77b34">L2HAL_InitCustomHardware()</a></p>
+<p>3) Call <a class="el" href="l2hal_8h.html#a2950ef10b922b73a83a190a11df972db">L2HAL_Init()</a> from your code before any L2HAL functions use. Call it to setup hardware. </p>
 
 </div>
 </div>

@@ -77,19 +77,10 @@
 #ifndef L2HAL_DRIVERS_INPUT_BUTTONS_INCLUDE_L2HAL_BUTTONS_H_
 #define L2HAL_DRIVERS_INPUT_BUTTONS_INCLUDE_L2HAL_BUTTONS_H_
 
-#include <stm32f1xx_hal.h>
+#include <l2hal_mcu.h>
 #include <l2hal_aux.h>
 #include <l2hal_errors.h>
 
-/**
- * Maximal ports count for given device. A-D for STM32F103
- */
-#define L2HAL_BUTTONS_MAX_PORTS_COUNT 4
-
-/**
- * Indexes to ports, i.e. 0 -> GPIOA, 1 -> GPIOB etc.
- */
-static const GPIO_TypeDef* L2HAL_Buttons_IndexesToPorts[L2HAL_BUTTONS_MAX_PORTS_COUNT] = { GPIOA, GPIOB, GPIOC, GPIOD/*, GPIOE, GPIOF, GPIOG*/ };
 
 /**
  * Button-defining struct.
@@ -177,7 +168,7 @@ typedef struct
 	/**
 	 * Ports data. Guarnteed to be valid during handlers calls.
 	 */
-	uint16_t PortsData[L2HAL_BUTTONS_MAX_PORTS_COUNT];
+	uint16_t PortsData[L2HAL_MAX_PORTS_COUNT];
 
 } L2HAL_Buttons_ContextStruct;
 
