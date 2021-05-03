@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['writepagesize_337',['WritePageSize',['../struct_l2_h_a_l__24x___context_struct.html#ad286ee5934103ff24932865d8bac1e52',1,'L2HAL_24x_ContextStruct']]]
+  ['uart_5fhandle_344',['UART_Handle',['../struct_l2_h_a_l___h_c06___context_struct.html#abd8e447b55b6f3dd2f4823100c18b238',1,'L2HAL_HC06_ContextStruct']]]
 ];

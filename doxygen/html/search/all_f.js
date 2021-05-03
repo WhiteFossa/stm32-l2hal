@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['writepagesize_183',['WritePageSize',['../struct_l2_h_a_l__24x___context_struct.html#ad286ee5934103ff24932865d8bac1e52',1,'L2HAL_24x_ContextStruct']]],
-  ['wrongargument_184',['WrongArgument',['../l2hal__errors_8h.html#ac171f7a7d08082e87e2308df7b0d0868a76739d9a7a6f73e161612e31415cbc8a',1,'l2hal_errors.h']]],
-  ['wrongoperation_185',['WrongOperation',['../l2hal__errors_8h.html#ac171f7a7d08082e87e2308df7b0d0868a6a534b46ae558c5295e7ef5e76995fb5',1,'l2hal_errors.h']]]
+  ['uart_5fhandle_186',['UART_Handle',['../struct_l2_h_a_l___h_c06___context_struct.html#abd8e447b55b6f3dd2f4823100c18b238',1,'L2HAL_HC06_ContextStruct']]]
 ];
