@@ -80,6 +80,7 @@
 #ifndef L2HAL_DRIVERS_DAC_AD5245_INCLUDE_L2HAL_AD5245_H_
 #define L2HAL_DRIVERS_DAC_AD5245_INCLUDE_L2HAL_AD5245_H_
 
+#include <stdbool.h>
 #include <stdint.h>
 #include <stm32f1xx_hal.h>
 #include <l2hal_aux.h>
@@ -88,7 +89,7 @@
 /**
  * IIC bus timeout for device operations
  */
-#define L2HAL_AD5245_BUS_TIMEOUT 100
+#define L2HAL_AD5245_BUS_TIMEOUT 200U
 
 /**
  * AD5245 context

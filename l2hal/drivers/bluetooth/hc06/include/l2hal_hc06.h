@@ -8,8 +8,10 @@
 #ifndef L2HAL_DRIVERS_BLUETOOTH_HC06_INCLUDE_L2HAL_HC06_H_
 #define L2HAL_DRIVERS_BLUETOOTH_HC06_INCLUDE_L2HAL_HC06_H_
 
+#include <stdbool.h>
 #include <stdint.h>
 #include <string.h>
+#include <stdio.h>
 #include <stm32f1xx_hal.h>
 #include <l2hal_aux.h>
 #include <l2hal_errors.h>
@@ -23,6 +25,11 @@
  * Maximal length of bluetooth name
  */
 #define L2HAL_HC06_MAX_NAME_LENGTH 16
+
+/**
+ * Maximal memory size for bluetooth name
+ */
+#define L2HAL_HC06_MAX_NAME_MEMORY_SIZE (L2HAL_HC06_MAX_NAME_LENGTH + 1)
 
 /**
  * PIN code length (4 characters + null-termination)

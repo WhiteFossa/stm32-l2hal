@@ -9,52 +9,57 @@
 
 L2HAL_HC06_ContextStruct L2HAL_HC06_AttachToDevice(UART_HandleTypeDef* uart)
 {
+	/* Cancelling current UART exchange */
+	if (HAL_UART_Abort(uart) != HAL_OK)
+	{
+		L2HAL_Error(Generic);
+	}
+
 	L2HAL_HC06_ContextStruct context;
 	context.IsFound = false;
 	context.UART_Handle = uart;
 
-	char buffer[3]; /* 3, not 2, because sprintf will add null-termination */
-	sprintf(buffer, "AT");
+	uint8_t bufferSize = 3;
+	char buffer[bufferSize];
+	snprintf(buffer, bufferSize, "AT");
 
 	if (HAL_UART_Transmit(context.UART_Handle, (uint8_t*)buffer, 2, L2HAL_HC06_UART_TIMEOUT) != HAL_OK)
 	{
 		L2HAL_Error(Generic);
 	}
 
-	/* Immediately expecting an answer */
-	HAL_StatusTypeDef receiveStatus = HAL_UART_Receive(context.UART_Handle, (uint8_t*)buffer, 2, L2HAL_HC06_UART_TIMEOUT);
+	/* Immediately expecting an answer (Somehow HC-06 may return either OK or \0OK. Probably we aren't
+	 * fast enough */
 
-	if (HAL_TIMEOUT == receiveStatus)
-	{
-		return context; /* Not found */
-	}
-	else if (HAL_OK == receiveStatus)
-	{
-		/* 3rd byte in buffer is 0x00, so we can use strcmp*/
-		if (0 == strcmp("OK", buffer))
-		{
-			context.IsFound = true;
-		}
+	/* We MUST NOT check for received status - it might be timeout, because we don't know how many bytes
+	 * will be returned */
+	HAL_UART_Receive(context.UART_Handle, (uint8_t*)buffer, 3, L2HAL_HC06_UART_TIMEOUT);
 
-		return context;
+	if ((buffer[0] == 'O' && buffer[1] == 'K')
+		|| (buffer[0] == 0x00 && buffer[1] == 'O' && buffer[2] == 'K'))
+	{
+		context.IsFound = true;
 	}
 	else
 	{
-		L2HAL_Error(Generic);
+		context.IsFound = false;
 	}
+
+	return context;
 
 	return context;
 }
 
 void L2HAL_HC06_SetName(L2HAL_HC06_ContextStruct* context, const char* name)
 {
+
 	if (strlen(name) > L2HAL_HC06_MAX_NAME_LENGTH)
 	{
 		L2HAL_Error(Generic);
 	}
 
-	char processedName[L2HAL_HC06_MAX_NAME_LENGTH + 1]; /* +1 for null termination */
-	strcpy(processedName, name);
+	char processedName[L2HAL_HC06_MAX_NAME_MEMORY_SIZE];
+	strncpy(processedName, name, L2HAL_HC06_MAX_NAME_MEMORY_SIZE);
 
 	for (uint8_t i = 0; i < L2HAL_HC06_MAX_NAME_LENGTH; i++)
 	{
@@ -64,14 +69,15 @@ void L2HAL_HC06_SetName(L2HAL_HC06_ContextStruct* context, const char* name)
 		}
 		else if (0x20 == processedName[i]) /* Space */
 		{
-			processedName[i] = 0x5f;
+			processedName[i] = 0x5f; /* Underscore */
 		}
 	}
 
-	char buffer[32];
-	sprintf(buffer, "AT+NAME%s", processedName);
+	uint8_t bufferSize = 32;
+	char buffer[bufferSize];
+	snprintf(buffer, bufferSize, "AT+NAME%s", processedName);
 
-	uint8_t sendLength = strlen(buffer);
+	uint8_t sendLength = (uint8_t)strlen(buffer);
 	if (HAL_UART_Transmit(context->UART_Handle, (uint8_t*)buffer, sendLength , L2HAL_HC06_UART_TIMEOUT) != HAL_OK)
 	{
 		L2HAL_Error(Generic);
@@ -93,10 +99,11 @@ void L2HAL_HC06_SetName(L2HAL_HC06_ContextStruct* context, const char* name)
 
 void L2HAL_HC06_SetPIN(L2HAL_HC06_ContextStruct* context, const char pin[L2HAL_HC06_PIN_CODE_LENGTH])
 {
-	char buffer[16];
-	sprintf(buffer, "AT+PIN%s", pin);
+	uint8_t bufferSize = 16;
+	char buffer[bufferSize];
+	snprintf(buffer, bufferSize, "AT+PIN%s", pin);
 
-	uint8_t sendLength = strlen(buffer);
+	uint8_t sendLength = (uint8_t)strlen(buffer);
 	if (HAL_UART_Transmit(context->UART_Handle, (uint8_t*)buffer, sendLength, L2HAL_HC06_UART_TIMEOUT) != HAL_OK)
 	{
 		L2HAL_Error(Generic);

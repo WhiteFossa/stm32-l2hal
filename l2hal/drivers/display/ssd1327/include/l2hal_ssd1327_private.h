@@ -76,6 +76,26 @@
 #define L2HAL_SSD1327_GET_PIXEL_MULTIPLIER 17U
 
 /**
+ * Page (horizontal stripe) width (for monochrome mode).
+ */
+#define L2HAL_SSD1327_PAGE_WIDTH 8
+
+/**
+ * Wait this amount of milliseconds after transmitting column address before sending a row address
+ */
+#define L2HAL_SSD1327_COLUMN_ADDRESS_TO_ROW_ADDRESS_DELAY 5U
+
+/**
+ * Wait this amount of milliseconds after transmitting a line before sending the next one
+ */
+#define L2HAL_SSD1327_INTERLINE_DELAY 2U
+
+/**
+ * Wait this amount of milliseconds after transmitting row address before sending the data
+ */
+#define L2HAL_SSD1327_ROW_ADDRESS_TO_DATA_DELAY 5U
+
+/**
  * Causes L2HAL error if display not found.
  * @param context Pointer to driver context.
  */
@@ -110,5 +130,17 @@ void L2HAL_SSD1327_WriteData(L2HAL_SSD1327_ContextStruct* context, uint8_t* data
  * @return True if coordinates are correct, false otherwise
  */
 bool L2HAL_SSD1327_GetPixelAddress(uint16_t x, uint16_t y, uint16_t* index, bool* isMostSignificantNibble);
+
+/**
+ * Getting x and y position and checking them against display size. If incorrect returns false.
+ * If correct - putting framebuffer array index into index and bit mask (all bits is 0 except one, pointing to requested
+ * pixel) for pixel in byte.
+ * @param x X coordinate.
+ * @param y Y coordinate.
+ * @param index Pointer to variable, where framebuffer array index will be put.
+ * @param mask Pointer to variable, where bitmask, corresponing to given pixel, will be put.
+ * @return True if coordinates are correct, false otherwise.
+ */
+bool L2HAL_SSD1327_GetPixelAddressMonochrome(uint16_t x, uint16_t y, uint16_t* index, uint8_t* mask);
 
 #endif /* L2HAL_DRIVERS_DISPLAY_SSD1327_INCLUDE_L2HAL_SSD1327_PRIVATE_H_ */

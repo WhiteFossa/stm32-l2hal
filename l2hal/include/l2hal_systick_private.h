@@ -44,37 +44,16 @@
 
 #include <l2hal_errors.h>
 #include <l2hal_systick.h>
+#include <stdlib.h>
 
 /**
- * Context, associated with SysTick driver.
+ * Maximal possible count of SysTick handlers
  */
-typedef struct
-{
-	/**
-	 * Amount of registered SysTick handlers.
-	 */
-	uint16_t HandlersCount;
-
-	/**
-	 * Array of pointers to registered SysTick handlers.
-	 */
-	void (**Handlers)(void);
-
-} L2HAL_SysTick_ContextStruct;
-
-/**
- * SysTick driver context.
- */
-L2HAL_SysTick_ContextStruct L2HAL_SysTick_Context = { 0 };
+#define L2HAL_SYSTICK_MAX_HANDLERS 16U
 
 /**
  * Call it to initialize SysTick driver. Place it into void L2HAL_Init(void) after clocks initialization.
  */
 void L2HAL_SysTick_Init(void);
-
-/**
- * Call it from SysTick_Handler().
- */
-volatile void L2HAL_SysTick_Callback(void);
 
 #endif /* L2HAL_INCLUDE_L2HAL_SYSTICK_PRIVATE_H_ */
